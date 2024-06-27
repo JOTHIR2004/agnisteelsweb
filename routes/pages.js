@@ -1,0 +1,79 @@
+const express=require("express");
+const router=express.Router(); 
+const userController=require("../controllers/users");
+router.get("/login",(req,res)=>{
+    //res.send("<h1> HELLO WORLD</h1>");
+    res.render("login");
+});
+router.get("/register",(req,res)=>{
+  res.render("register");
+});
+router.get("/",userController.isLoggedIn,(req,res)=>{
+  //console.log(req.name);
+  if(req.user){
+    res.render("home",{user:req.user});
+  }else{
+    res.redirect("/login");
+  }
+
+});
+router.get("/aboutus",(req,res)=>{
+  res.render("aboutus");
+});
+router.get("/community",(req,res)=>{
+  res.render("community");
+});
+router.get("/product",(req,res)=>{
+  res.render("product");
+});
+router.get("/dealer",(req,res)=>{
+  res.render("dealer");
+});
+router.get("/contact",(req,res)=>{
+  res.render("contact");
+});
+router.get("/prod1",(req,res)=>{
+  res.render("prod1");
+});
+router.get("/prod2",(req,res)=>{
+  res.render("prod2");
+});
+router.get("/prod3",(req,res)=>{
+  res.render("prod3");
+});
+router.get("/prod4",(req,res)=>{
+  res.render("prod4");
+});
+router.get("/prod5",(req,res)=>{
+  res.render("prod5");
+});
+router.get("/prod6",(req,res)=>{
+  res.render("prod6");
+});
+router.get("/prod7",(req,res)=>{
+  res.render("prod7");
+});
+router.get("/prod8",(req,res)=>{
+  res.render("prod8");
+});
+router.get("/C",(req,res)=>{
+  res.render("C");
+});
+router.get("/D",(req,res)=>{
+  res.render("D");
+});
+router.get("/E",(req,res)=>{
+  res.render("E");
+});
+router.get("/vm",(req,res)=>{
+  res.render("vm");
+});
+router.get("/qa",(req,res)=>{
+  res.render("qa");
+});
+router.get("/cert",(req,res)=>{
+  res.render("cert");
+});
+
+
+module.exports=router;

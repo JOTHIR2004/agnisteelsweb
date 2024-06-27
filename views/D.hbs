@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DEALER</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="back">
+    <div class="header">
+        <img src="/images/logo.svg" width="190" height="110">
+        <a href="C" class="comhead">C</a>
+        <a href="D" class="comhead">D</a>
+        <a href="E" class="comhead">E</a>
+        <div class="pages">
+            <a href="/">HOME|</a>
+            <a href="/aboutus">ABOUT US|</a>
+            <a href="/community">COMMUNITY|</a>
+            <a href="/product">PRODUCT|</a>
+            <a href="/dealer">DEALER|</a>
+            <a href="/contact">CONTACT US|</a>
+            <a href="/login">LOGIN|</a>
+            <a href="/register">REGISTER|</a>
+            <a href="/auth/logout">LOGOUT|</a>
+        </div>
+    </div>
+    <br>
+    <div class="mainbox">
+        <div class="chat-container">
+            <div class="chatbox">
+                <div class="messages" id="chatMessages">
+                    <!-- Messages will be dynamically loaded here -->
+                </div>
+                <div class="message-input">
+                    <input type="text" id="messageInput" placeholder="Type your message...">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/chat.js"></script>
+</body>
+</html>

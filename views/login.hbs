@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body class="back">
+        {{> header}}
+        <center>
+            <div class="outbox">
+                <img src="/images/logo.svg" width="190" height="110" alt="Logo">
+                {{#if msg}}
+                 <p class="{{msg_type}}">{{msg}}</p>
+                {{/if}}
+                <form action="/auth/login" method="post">
+                    <h1 style="color: black;">EMAIL</h1>
+                    <input type="email" class="enter" name="email" required>
+                    <h1 class="password" style="color: black;">PASSWORD</h1>
+                    <input type="password" class="enter" name="password" required><br><br>
+                    <button type="submit">Login -></button>
+                </form>
+                <br>
+
+                <hr class="thick">
+                <br>
+                <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%3Fhl%3Den-US&ec=GAlA8wE&hl=en&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S-1811855074%3A1717756411670560&ddm=0">
+                    <img src="/images/googleicon.svg" width="50px" height="50px" alt="Google Login">
+                </a>
+                <br><br>
+                <h5 style="color: black;font-family:Poppins, sans-serif; ">New Member?Just </h5>
+                <a href="/register">Register</a>
+            </div>
+        </center>
+    </body>
+</html>
