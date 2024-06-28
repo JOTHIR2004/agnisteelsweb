@@ -32,6 +32,7 @@ app.use(express.json());
 
 const location = path.join(__dirname, './public');
 app.use(express.static(location));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 const partialsPath = path.join(__dirname, './views/partials');
