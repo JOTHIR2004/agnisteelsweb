@@ -1,42 +1,46 @@
-const express=require('express');
-const mysql=require("mysql");
-const doenv=require("dotenv");
-const path=require("path");
-const hbs=require("hbs");
-const cookieParser=require("cookie-parser");
+const express = require('express');
+const mysql = require('mysql');
+const dotenv = require('dotenv');
+const path = require('path');
+const hbs = require('hbs');
+const cookieParser = require('cookie-parser');
 
-doenv.config({
-  path:"./.env",
-})
-const app=express();
-const db=mysql.createConnection({
-   host:process.env.DATABASE_HOST,
-   user:process.env.DATABASE_USER,
-   password:process.env.DATABASE_PASS,
-   database:process.env.DATABASE,
+dotenv.config({
+  path: './.env',
 });
-db.connect((err)=>{
-  if(err){
+
+const app = express();
+
+const db = mysql.createConnection({
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASS,
+  database: process.env.DATABASE,
+});
+
+db.connect((err) => {
+  if (err) {
     console.log(err);
-  }
-  else{
-    console.log("mysql connection success");
+  } else {
+    console.log('MySQL connection success');
   }
 });
+
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
-const location=path.join(__dirname,"./public");
+app.use(express.json());
+
+const location = path.join(__dirname, './public');
 app.use(express.static(location));
-app.set("view engine","hbs");
+app.set('view engine', 'hbs');
 
-const partialspath=path.join(__dirname,"./views/partials");
-hbs.registerPartials(partialspath);
+const partialsPath = path.join(__dirname, './views/partials');
+hbs.registerPartials(partialsPath);
 
-app.use("/",require("./routes/pages"));
-app.use("/auth",require("./routes/auth"));
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
-app.listen(5000,()=>{
-    console.log("server started at port 5000");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server started at port ${PORT}`);
 });
-
-
