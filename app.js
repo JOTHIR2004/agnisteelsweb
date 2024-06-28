@@ -40,6 +40,12 @@ hbs.registerPartials(partialsPath);
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 
+app.use((err, req, res, next) => {
+  console.error('Error stack:', err.stack);
+  console.error('Error message:', err.message);
+  res.status(500).send('Something broke!');
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server started at port ${PORT}`);
