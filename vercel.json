@@ -16,6 +16,10 @@
     "DATABASE_HOST": "@database_host",
     "DATABASE_USER": "@database_user",
     "DATABASE_PASS": "@database_pass",
-    "DATABASE": "@database"
+    "DATABASE": "@database",
+    "JWT_SECRET": "@jwt_secret",
+    "JWT_EXPIRES_IN": "@jwt_expires_in",
+    "JWT_COOKIE_EXPIRES": "@jwt_cookie_expires"
   }
+  
 }
