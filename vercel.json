@@ -12,4 +12,10 @@
       "dest": "/app.js"
     }
   ]
+  "env": {
+    "DATABASE_HOST": "@database_host",
+    "DATABASE_USER": "@database_user",
+    "DATABASE_PASS": "@database_pass",
+    "DATABASE": "@database"
+  }
 }
