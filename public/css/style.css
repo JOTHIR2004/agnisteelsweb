@@ -618,3 +618,96 @@ iframe{
 .message-input button:hover {
   background-color: #0056b3;
 }
+
+/* Responsive styles */
+@media only screen and (max-width: 1200px) {
+    .outbox {
+        margin: 50px;
+    }
+    .prodpage {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+    .customer,
+    .engineer {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .prodpage p {
+        font-size: medium;
+    }
+    .prodpage button {
+        margin-left: 0;
+    }
+    .section3 u {
+        margin-left: 0;
+    }
+    .homepara {
+        margin-left: 0;
+        font-size: 25px;
+    }
+    .section3 p {
+        font-size: 20px;
+        width: 100%;
+    }
+    .homeparaleft p {
+        font-size: 20px;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .outbox {
+        padding: 20px;
+    }
+    .prodpage {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px;
+    }
+    .pages a {
+        font-size: 14px;
+    }
+    button {
+        padding-inline: 20px;
+    }
+    .customer,
+    .engineer {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .leftprod,
+    .rightprod {
+        margin-left: 0;
+    }
+    .section3 u {
+        font-size: large;
+    }
+}
+
+/* Adjusting styles for small devices */
+@media only screen and (max-width: 360px) {
+    .prodpage p {
+        font-size: small;
+    }
+    .section3 p {
+        font-size: small;
+    }
+    .homeparaleft p {
+        font-size: small;
+    }
+    .homepara {
+        font-size: 20px;
+    }
+}
