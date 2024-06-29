@@ -21,88 +21,103 @@ exports.login = async (req, res) => {
     }
 
     db.query(
-      "select * from users where email=?",
+      "SELECT * FROM users WHERE email = ?",
       [email],
       async (error, result) => {
-        console.log(result);
-        if (result.length <= 0) {
-          return res.status(401).render("login", {
-            msg: "Please Enter Your Email and Password",
+        if (error) {
+          console.error(error);
+          return res.status(500).render("login", {
+            msg: "Internal Server Error",
             msg_type: "error",
           });
-        } else {
-          if (!(await bcrypt.compare(password, result[0].pass))) {
-            return res.status(401).render("login", {
-              msg: "Please Enter Your Email and Password",
-              msg_type: "error",
-            });
-          } else {
-            const id = result[0].ID;
-            const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
-              expiresIn: process.env.JWT_EXPIRES_IN,
-            });
-            console.log("The Token is " + token);
-            const cookieOptions = {
-              expires: new Date(
-                Date.now() +
-                  process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-              ),
-              httpOnly: true,
-            };
-            res.cookie("joes", token, cookieOptions);
-            res.status(200).redirect("/");
-          }
         }
+
+        if (!result || result.length === 0) {
+          return res.status(401).render("login", {
+            msg: "Email or Password is incorrect",
+            msg_type: "error",
+          });
+        }
+
+        const user = result[0];
+        const isPasswordMatch = await bcrypt.compare(password, user.pass);
+
+        if (!isPasswordMatch) {
+          return res.status(401).render("login", {
+            msg: "Email or Password is incorrect",
+            msg_type: "error",
+          });
+        }
+
+        const id = user.ID;
+        const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
+          expiresIn: process.env.JWT_EXPIRES_IN,
+        });
+        console.log("The Token is " + token);
+
+        const cookieOptions = {
+          expires: new Date(
+            Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+          ),
+          httpOnly: true,
+        };
+        res.cookie("joes", token, cookieOptions);
+        res.status(200).redirect("/");
       }
     );
   } catch (error) {
     console.log(error);
+    return res.status(500).render("login", {
+      msg: "Internal Server Error",
+      msg_type: "error",
+    });
   }
 };
+
 exports.register = (req, res) => {
   console.log(req.body);
-  /*
-  const name = req.body.name;
-  const email = req.body.email;
-  const password = req.body.password;
-  const confirm_password = req.body.confirm_password;
-  console.log(name);
-  console.log(email);
-    //res.send("Form Submitted");
-  */
-  const { name, email, password, confirm_password ,phone,role } = req.body;
+
+  const { name, email, password, confirm_password, phone, role } = req.body;
+
   db.query(
-    "select email from users where email=?",
+    "SELECT email FROM users WHERE email = ?",
     [email],
     async (error, result) => {
       if (error) {
-        confirm.log(error);
+        console.error(error);
+        return res.status(500).render("register", {
+          msg: "Internal Server Error",
+          msg_type: "error",
+        });
       }
 
       if (result.length > 0) {
         return res.render("register", {
-          msg: "Email id already Taken",
+          msg: "Email id already taken",
           msg_type: "error",
         });
       } else if (password !== confirm_password) {
         return res.render("register", {
-          msg: "Password do not match",
+          msg: "Passwords do not match",
           msg_type: "error",
         });
       }
+
       let hashedPassword = await bcrypt.hash(password, 8);
-      //console.log(hashedPassword);
 
       db.query(
-        "insert into users set ?",
-        { name: name, email: email, pass: hashedPassword ,phoneno:phone,role:role },
+        "INSERT INTO users SET ?",
+        { name: name, email: email, pass: hashedPassword, phoneno: phone, role: role },
         (error, result) => {
           if (error) {
-            console.log(error);
+            console.error(error);
+            return res.status(500).render("register", {
+              msg: "Internal Server Error",
+              msg_type: "error",
+            });
           } else {
-            //console.log(result);
             return res.render("register", {
-              msg: "User Registration Success",
+              msg: "User registration successful",
               msg_type: "good",
             });
           }
@@ -113,21 +128,18 @@ exports.register = (req, res) => {
 };
 
 exports.isLoggedIn = async (req, res, next) => {
-  //req.name = "Check Login....";
-  //console.log(req.cookies);
   if (req.cookies.joes) {
     try {
       const decode = await promisify(jwt.verify)(
         req.cookies.joes,
         process.env.JWT_SECRET
       );
-      //console.log(decode);
+
       db.query(
-        "select * from users where id=?",
+        "SELECT * FROM users WHERE id = ?",
         [decode.id],
         (err, results) => {
-          //console.log(results);
-          if (!results) {
+          if (err || !results || results.length === 0) {
             return next();
           }
           req.user = results[0];
