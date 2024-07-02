@@ -455,6 +455,10 @@ iframe{
   margin-top: 30px;
   margin-bottom: 30px;
 }
+.vision .vspan{
+  margin-right: auto;
+  margin-left: 350px;
+}
 .mission p{
   margin-left:50px;
 }
@@ -622,22 +626,113 @@ iframe{
   .outbox {
       padding: 20px;
       margin-top: 50px;
+      margin-left: auto;
+      margin-right: auto;
   }
   .header {
       flex-direction: column;
-      align-items: flex-start;
+      align-items:flex;
+      
   }
-  .prodpage {
-      margin-top: 100px;
+  .prodpage{
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 150px;
+    color:#000000;
+    background-color: rgba(70, 129, 168, 0.767);
+    border-radius: 20px;
+    height: fit-content;
+}
+.prodpage p{
+    padding-left: 20px;
+    font-size:large;
+    font-family:"roboto" sans-serif;
+    font-weight:700;
+    color:yellow;
+    border-width: 1px;
+
+}
+.prodpage button{
+    background-color: yellow;
+    color: #000000;
+    justify-content: center;
+    font-family: "roboto" sans-serif;
+    font-weight: 200px;
+    margin-left:275px;
+    border-color: #D9D9D9;
+    border-width: 3px;
+}
+.prodspan{
+    font-weight: bolder;
+    color: #000000;
+    border-width: 1px;
+}
+/*.prodimage{
+    padding-right:10px; 
+    padding-left:20px;
+    padding-top:10px;
+}*/
+  .secton1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 20px; /* Space between the columns */
+    align-items: start; /* Align items at the start of each grid area */
   }
-  .prodpage button {
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
+  
+  .section1 .main {
+    width: 100%; /* Make the iframe take up the full width of the .main div */
+    height: 300px; /* Adjust the height as needed */
+    margin: auto;
+  } 
+  .section1 .homepara{
+    margin-left: 0%;
+    margin-top: 20px;
   }
-  .section1, .section2, .section3 {
+  .section2{
+    padding: 10px 0;
+    display: block;
+  } 
+  .section3inner {
       padding: 10px 0;
       display: block;
+  }
+  .section3 .heading{
+    font-family: "Poppins", sans-serif;
+    font-size: xx-large;
+    margin-left: 315px;
+    color:yellow;
+    }
+  
+  .heading{
+      font-family: "Poppins", sans-serif;
+      font-size: xx-large;
+      margin-left: 315px;
+      color:yellow;   
+  }
+  .header a{
+    margin-bottom: 5px;
+  }
+  .history img{
+    margin-right:auto;
+    margin-left:260px ;
+  }
+  .vision img{
+    margin-right:auto;
+    margin-left:260px ;
+  }
+  .vision .vspan{
+    margin-right: auto;
+    margin-left: 75px;
+  }
+  .mission img{
+    margin-right:auto;
+    margin-left:260px ;
+  }
+  .certi img{
+    margin-left: 30px;
+  }
+  .certilast{
+    margin-left: 200px;
   }
   .flexrow {
       flex-direction: column;
@@ -653,18 +748,161 @@ iframe{
   }
 }
 
-@media screen and (max-width: 480px) {
-  h1, .password, .homepara, .homeparaleft p, .cusquery, .cusquery ul, .cusquery .query {
-      font-size: smaller;
+@media screen and (max-width: 425px) {
+  .outbox {
+    padding: 20px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header {
+    flex-direction: column;
+    align-items:flex;
+    
+}
+.prodpage{
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 150px;
+  color:#000000;
+  background-color: rgba(70, 129, 168, 0.767);
+  border-radius: 20px;
+  height: fit-content;
+}
+.prodpage p{
+  padding-left: 20px;
+  font-size:medium;
+  font-family:"roboto" sans-serif;
+  font-weight:700;
+  color:yellow;
+  border-width: 1px;
+
+}
+.prodpage button{
+  background-color: yellow;
+  color: #000000;
+  justify-content: center;
+  font-family: "roboto" sans-serif;
+  font-weight: 200px;
+  margin-left:100px;
+  border-color: #D9D9D9;
+  border-width: 3px;
+}
+.prodspan{
+  font-weight: bolder;
+  color: #000000;
+  border-width: 1px;
+  font-size: medium;
+}
+.prodimage{
+  padding-right:10px; 
+  padding-left:20px;
+  padding-top:10px;
+  width:400px;
+}
+.secton1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px; /* Space between the columns */
+  align-items: start; /* Align items at the start of each grid area */
+}
+
+.section1 .main {
+  width: 100%; /* Make the iframe take up the full width of the .main div */
+  height: 300px; /* Adjust the height as needed */
+  margin: auto;
+} 
+.section1 .homepara{
+  margin-left: 0%;
+  margin-top: 20px;
+}
+.section2{
+  padding: 10px 0;
+  display: block;
+} 
+.section3inner {
+    padding: 10px 0;
+    display: block;
+}
+.section3 .heading{
+  font-family: "Poppins", sans-serif;
+  font-size: xx-large;
+  margin-left: 315px;
+  color:yellow;
   }
-  .prodimage, .rightprod, .leftprod, .mainbox {
-      padding: 0;
-  }
-  .textbox, .textbox1, .textbox2, .button, .b, .c, .d, .e, .f {
-      width: 80%;
-      margin-left: 10%;
-  }
-  .heading, .heading2, .title {
-      font-size: large;
-  }
+
+.heading{
+    font-family: "Poppins", sans-serif;
+    font-size: medium;
+    margin-left: 170px;
+    color:yellow;   
+}
+.header a{
+  margin-bottom: 20px;
+  display: block;
+}
+.comhead{
+  color: #000000;
+  font-size: large;
+  background-color: #D9D9D9;
+  cursor: pointer;
+  display: block;
+  border-radius: 50%;
+  text-decoration: none;
+  padding-left: 1px;
+  
+}
+.header{
+  display: block;
+  font-size: xx-small;
+  
+}
+.history img{
+  margin-right:auto;
+  margin-left:90px;
+}
+.vision img{
+  margin-right:auto;
+  margin-left:90px;
+}
+.vision .vspan {
+  margin-right: auto;
+  margin-left: 50px;
+  font-size: medium;
+}
+.vision p{
+  font-size: medium;
+  margin-left: 20px;
+}
+.mission p{
+  font-size: medium;
+  margin-left: 20px;
+}
+.mission img{
+  margin-right:auto;
+  margin-left:90px ;
+}
+.certi img{
+  margin-left: 10px;
+  width:400px;
+}
+.certilast{
+  margin-left: 50px;
+  font-size: medium;
+}
+.flexrow {
+    flex-direction: column;
+    align-items: center;
+}
+.ques {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.customer, .engineer, .dealer {
+    height: auto;
+    padding: 20px;
+}
+.img-text-container{
+  font-size: medium;
+}
 }
